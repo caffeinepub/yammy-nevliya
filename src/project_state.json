@@ -1,0 +1,259 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 7,
+  "summary": "Website named \"yammy nevliya\" for world-famous food recipes with Hindi and English language support, including recipe photos and automatic addition of various recipe types.",
+  "existing_features": [
+    {
+      "id": "feature-implement-a-bilingual-ui-for-yammy-nevliya-with-a-global-language-toggle-hindi-english-that-switches-all-recipe-content-fields-and-key-ui-labels-across-the-app",
+      "title": "Implement a bilingual UI for Yammy Nevliya with a global language toggle (Hindi/English) that switches all recipe content fields and key UI labels across the app.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-the-primary-frontend-pages-and-navigation-for-the-recipe-site-1-home-explore-page-with-search-and-filters-category-and-cuisine-2-recipe-list-grid-showing-photo-key-metadata-and-3-recipe-detail-page-showing-photo-metadata-ingredients-and-steps",
+      "title": "Build the primary frontend pages and navigation for the recipe site: (1) Home/Explore page with search and filters (category and cuisine), (2) recipe list/grid showing photo + key metadata, and (3) recipe detail page showing photo, metadata, ingredients, and steps.",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-in-app-recipe-creation-form-that-allows-adding-new-recipes-without-code-changes-including-all-bilingual-fields-english-hindi-metadata-fields-and-selecting-a-photoassetpath-from-available-static-assets",
+      "title": "Add an in-app recipe creation form that allows adding new recipes without code changes, including all bilingual fields (English + Hindi), metadata fields, and selecting a photoAssetPath from available static assets.",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-coherent-distinctive-visual-theme-for-a-food-recipe-site-colors-typography-layout-and-components-and-enforce-it-consistently-across-the-header-navigation-cards-filters-forms-and-detail-pages-avoid-blue-purple-as-primary-colors",
+      "title": "Apply a coherent, distinctive visual theme for a food/recipe site (colors, typography, layout, and components) and enforce it consistently across the header, navigation, cards, filters, forms, and detail pages (avoid blue/purple as primary colors).",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-generated-static-image-assets-under-frontend-public-assets-generated-logo-hero-and-a-small-set-of-recipe-photos-and-render-them-in-the-ui-for-site-branding-and-seeded-recipes-via-photoassetpath",
+      "title": "Add generated static image assets under frontend/public/assets/generated (logo/hero and a small set of recipe photos) and render them in the UI for site branding and seeded recipes via photoAssetPath.",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Build a recipe website featuring world-famous food recipes",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add bilingual content support (Hindi and English)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Include recipe photos/images for each recipe",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Automatically add/populate recipes of various types (auto-ingestion/auto-import)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Create the core recipe data model and persistence in the Motoko backend, including bilingual fields for each recipe (English + Hindi) and recipe metadata (id, titleEn, titleHi, descriptionEn, descriptionHi, ingredientsEn, ingredientsHi, stepsEn, stepsHi, cuisine, category, prepTimeMinutes, cookTimeMinutes, servings, photoAssetPath, createdAt).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Pre-populate (seed) the app with an initial set of world-famous recipes spanning multiple categories and cuisines, each including both English and Hindi content and an associated photo asset path.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Implement a bilingual (English/Hindi) UI with a global language toggle that switches all recipe content and key UI labels between English and Hindi.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Build the main user flows: (1) Home/Explore page with search and filters (category/cuisine), (2) Recipe list/grid with photos, (3) Recipe detail page showing ingredients and steps with photo and metadata.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Provide a simple in-app way to add new recipes (bilingual) so new recipe types can be added without code changes, including uploading/selecting a photo asset reference for the recipe.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Use a coherent, distinctive visual theme for a food/recipe site (colors, typography, layout, and components) and apply it consistently across pages.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Add generated static image assets (logo/hero + a small set of recipe photos) under frontend/public/assets/generated and render them in the UI for the seeded recipes and site branding.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Create the Motoko backend data model and persistence for recipes, storing bilingual (English + Hindi) fields and metadata: id, titleEn, titleHi, descriptionEn, descriptionHi, ingredientsEn, ingredientsHi, stepsEn, stepsHi, cuisine, category, prepTimeMinutes, cookTimeMinutes, servings, photoAssetPath, createdAt.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Pre-populate (seed) the backend with an initial set of world-famous recipes spanning multiple categories and cuisines, each including both English and Hindi content and a valid photoAssetPath pointing to a frontend static asset.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Implement a bilingual UI (English/Hindi) with a global language toggle that switches all key UI labels and all recipe content fields between English and Hindi across the app.",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Build the main frontend user flows for the recipe website: (1) Home/Explore page with search and filters (category and cuisine), (2) recipe list/grid that displays recipe photos and key metadata, and (3) a recipe detail page showing photo, metadata, ingredients, and steps.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Provide an in-app recipe creation form that allows adding new recipes without code changes, including bilingual fields (English + Hindi), metadata fields, and choosing a photoAssetPath from available static assets.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Apply a coherent, distinctive visual theme for a food/recipe site (colors, typography, spacing, and components) and use it consistently across pages for Yammy Nevliya.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Add and render generated static image assets under frontend/public/assets/generated for site branding and seeded recipes (use these images in the UI via photoAssetPath and for a logo/hero).",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Create a Motoko backend recipe data model and persistence for a single-canister app, storing bilingual fields and metadata for each recipe: id, titleEn, titleHi, descriptionEn, descriptionHi, ingredientsEn, ingredientsHi, stepsEn, stepsHi, cuisine, category, prepTimeMinutes, cookTimeMinutes, servings, photoAssetPath, createdAt.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Seed the backend with an initial set of world-famous recipes across multiple categories and cuisines (e.g., appetizers, main courses, desserts), ensuring every seeded recipe includes both English and Hindi content and a valid photoAssetPath that points to a frontend static asset.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Warm, appetizing hero banner illustration with food items and subtle pattern (yammy-nevliya-hero.dim_1600x600.png)\n- Simple flat logo mark for a recipe brand, warm color palette (yammy-nevliya-logo.dim_512x512.png)\n- Food photo-style image of samosa on a plate (recipe-samosa.dim_1200x800.png)\n- Food photo-style image of a classic pizza (recipe-pizza.dim_1200x800.png)\n- Food photo-style image of sushi platter (recipe-sushi.dim_1200x800.png)\n- Food photo-style image of chocolate cake slice (recipe-chocolate-cake.dim_1200x800.png)\n- Food photo-style image of tacos (recipe-tacos.dim_1200x800.png)\n- Food photo-style image of ramen bowl (recipe-ramen.dim_1200x800.png)",
+  "generatedImages": [
+    {
+      "filename": "yammy-nevliya-hero.dim_1600x600.png",
+      "description": "Warm, appetizing hero banner illustration with food items and subtle pattern",
+      "targetWidth": 1600,
+      "targetHeight": 600
+    },
+    {
+      "filename": "yammy-nevliya-logo.dim_512x512.png",
+      "description": "Simple flat logo mark for a recipe brand, warm color palette",
+      "targetWidth": 512,
+      "targetHeight": 512
+    },
+    {
+      "filename": "recipe-samosa.dim_1200x800.png",
+      "description": "Food photo-style image of samosa on a plate",
+      "targetWidth": 1200,
+      "targetHeight": 800
+    },
+    {
+      "filename": "recipe-pizza.dim_1200x800.png",
+      "description": "Food photo-style image of a classic pizza",
+      "targetWidth": 1200,
+      "targetHeight": 800
+    },
+    {
+      "filename": "recipe-sushi.dim_1200x800.png",
+      "description": "Food photo-style image of sushi platter",
+      "targetWidth": 1200,
+      "targetHeight": 800
+    },
+    {
+      "filename": "recipe-chocolate-cake.dim_1200x800.png",
+      "description": "Food photo-style image of chocolate cake slice",
+      "targetWidth": 1200,
+      "targetHeight": 800
+    },
+    {
+      "filename": "recipe-tacos.dim_1200x800.png",
+      "description": "Food photo-style image of tacos",
+      "targetWidth": 1200,
+      "targetHeight": 800
+    },
+    {
+      "filename": "recipe-ramen.dim_1200x800.png",
+      "description": "Food photo-style image of ramen bowl",
+      "targetWidth": 1200,
+      "targetHeight": 800
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "yammy nevliya",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

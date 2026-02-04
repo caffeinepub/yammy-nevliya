@@ -1,0 +1,17 @@
+{
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining routes for Explore, Recipe Detail, and New Recipe pages, wrapped with LanguageProvider and including a footer with attribution.",
+  "frontend/src/i18n/LanguageProvider.tsx": "React context provider for managing bilingual language state (Hindi/English) with toggle functionality and translation helper, using ES6 import instead of require.",
+  "frontend/src/i18n/strings.ts": "Centralized dictionary containing all UI labels and text in both English and Hindi for the entire application.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching all recipes, individual recipes, adding new recipes, and client-side search filtering based on current language.",
+  "frontend/src/components/Header.tsx": "Sticky header component with logo, app name, navigation buttons (Explore, New Recipe), and language toggle button.",
+  "frontend/src/components/RecipeCard.tsx": "Recipe card component displaying recipe image, title, description, category/cuisine badges, and metadata (time, servings) with click navigation to detail page.",
+  "frontend/src/components/RecipeFiltersBar.tsx": "Filter bar component with search input and category/cuisine select dropdowns for filtering recipes.",
+  "frontend/src/components/RecipeMetadata.tsx": "Reusable metadata display component showing category, cuisine, prep time, cook time, and servings with icons.",
+  "frontend/src/components/PhotoAssetPicker.tsx": "Radio group component for selecting a recipe photo from available static assets with thumbnail previews.",
+  "frontend/src/components/RecipeForm.tsx": "Comprehensive bilingual recipe creation form with inputs for all English and Hindi fields, metadata, and photo selection.",
+  "frontend/src/pages/ExplorePage.tsx": "Home page with hero banner, search/filter controls, and responsive grid of recipe cards with loading states.",
+  "frontend/src/pages/RecipeDetailPage.tsx": "Recipe detail page displaying full recipe information including image, metadata, ingredients list, and step-by-step instructions with Tailwind v3 compatible classes.",
+  "frontend/src/pages/NewRecipePage.tsx": "New recipe creation page with form for submitting bilingual recipes to the backend with success/error toast notifications.",
+  "frontend/src/index.css": "Global styles with warm, food-themed OKLCH color palette (amber/orange/earth tones) for both light and dark modes.",
+  "frontend/tailwind.config.js": "Tailwind configuration with custom color tokens, Inter font family, and extended theme for the recipe website design system."
+}

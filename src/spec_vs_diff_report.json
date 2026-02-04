@@ -1,0 +1,95 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-04T09:45:37.995Z",
+  "summary": "Frontend implements bilingual UI with language toggle, explore/list/detail pages, filters, and a new-recipe form using React Query hooks. Backend defines a Recipe model and basic CRUD-like queries, but seeding/persistence/search requirements are only partially met, and static asset requirements are not evidenced in the diff.",
+  "missing_requirements": [
+    {
+      "id": "REQ-15",
+      "requirement": "Backend exposes methods to create, list, get-by-id, and search/filter recipes (including search by text).",
+      "reason": "Backend includes addRecipe, getRecipe, getAllRecipes, and simple cuisine/category filtering methods, but no text search method is implemented (and no combined search/filter API is evident).",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "requirement": "Recipe records persist across page refreshes/canister calls during runtime and are returned consistently by list/get APIs.",
+      "reason": "The recipe store and nextRecipeId are defined as non-stable variables (no stable storage shown), and there is no upgrade/state preservation logic; additionally, seeding is only called in postupgrade, not at initial deployment.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "requirement": "A fresh deploy includes a non-empty recipe list without requiring any user input.",
+      "reason": "seedRecipes() is only invoked in system func postupgrade(), so initial deployment would not seed data unless an upgrade occurs.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "requirement": "Seeded recipes cover at least 3 categories and at least 3 cuisines, and each has a photoAssetPath that resolves to an actual frontend static asset under the generated assets folder.",
+      "reason": "Only one seeded recipe is shown, and its photoAssetPath points to \"/static/images/recipes/carbonara.jpg\" rather than a frontend generated asset path (e.g., /assets/generated/...). No additional seeded recipes are present in the diff.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "requirement": "Add generated static image assets under frontend/public/assets/generated (logo/hero and recipe photos).",
+      "reason": "UI references generated assets paths, but no added image files under frontend/public/assets/generated are shown in the diff summary (some files were omitted due to limits, so existence cannot be confirmed from provided evidence).",
+      "evidence": [
+        "frontend/src/components/Header.tsx",
+        "frontend/src/pages/ExplorePage.tsx",
+        "frontend/src/components/PhotoAssetPicker.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Internet Identity authentication provider/hooks added and wired into the app runtime.",
+      "reason": "BuildRequest explicitly states authentication is not required; adding an Internet Identity provider and identity-dependent actor creation is beyond requested functionality (even though II is the only allowed provider if auth is needed).",
+      "evidence": [
+        "frontend/src/main.tsx",
+        "frontend/src/hooks/useInternetIdentity.ts",
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "Footer attribution link to an external site (caffeine.ai).",
+      "reason": "Not requested in the BuildRequest requirements or acceptance criteria.",
+      "evidence": [
+        "frontend/src/App.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.74,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/PhotoAssetPicker.tsx",
+    "frontend/src/components/RecipeCard.tsx",
+    "frontend/src/components/RecipeFiltersBar.tsx",
+    "frontend/src/components/RecipeForm.tsx",
+    "frontend/src/components/RecipeMetadata.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/i18n/LanguageProvider.tsx",
+    "frontend/src/i18n/strings.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/ExplorePage.tsx",
+    "frontend/src/pages/NewRecipePage.tsx",
+    "frontend/src/pages/RecipeDetailPage.tsx",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

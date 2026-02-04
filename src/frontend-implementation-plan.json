@@ -1,0 +1,260 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Yammy Nevliya bilingual recipes frontend (Explore, Detail, New Recipe, theme, assets)",
+  "requirements": [
+    {
+      "id": "REQ-17",
+      "summary": "Implement a bilingual (Hindi/English) UI with a global language toggle that switches recipe content and key UI labels without reload.",
+      "acceptanceCriteria": [
+        "A single language toggle is visible in the main header/navigation.",
+        "Toggling the language switches recipe titles, descriptions, ingredients, and steps between Hindi and English without reloading the page.",
+        "Key UI labels (navigation, search placeholder, form labels/buttons) change language consistently with the toggle."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/i18n/LanguageProvider.tsx",
+          "operation": "create",
+          "description": "Create a language context/provider (Hindi/English) with a global toggle state and helper utilities for selecting bilingual recipe fields. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/i18n/strings.ts",
+          "operation": "create",
+          "description": "Add a centralized dictionary for key UI labels (navigation, search, filters, form labels/buttons) in English and Hindi."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Implement the main header/navigation including a visible global Hindi/English toggle and translated navigation labels. Use shadcn-ui components (e.g., Button, Dropdown/Select) to render the toggle. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Wrap the app with LanguageProvider and wire Header so all pages can access current language and translations."
+        },
+        {
+          "path": "frontend/src/pages/ExplorePage.tsx",
+          "operation": "create",
+          "description": "Ensure explore/list UI reads current language and renders recipe title/description/metadata in the selected language."
+        },
+        {
+          "path": "frontend/src/pages/RecipeDetailPage.tsx",
+          "operation": "create",
+          "description": "Ensure recipe detail UI reads current language and renders bilingual title/description/ingredients/steps in the selected language."
+        },
+        {
+          "path": "frontend/src/pages/NewRecipePage.tsx",
+          "operation": "create",
+          "description": "Ensure the new-recipe form UI labels and helper text switch languages consistently with the global toggle."
+        }
+      ]
+    },
+    {
+      "id": "REQ-18",
+      "summary": "Build the primary pages and navigation: Explore with search + category/cuisine filters, recipe list/grid cards with photos/metadata, and recipe detail page.",
+      "acceptanceCriteria": [
+        "Users can navigate between an explore/list view and a recipe detail view.",
+        "Search filters the displayed recipes based on the currently selected language content.",
+        "Category and cuisine filters can be applied to narrow the list results.",
+        "Each recipe card shows an image, title, and at least category/cuisine and time/servings metadata.",
+        "Recipe detail page shows the recipe image, bilingual title/description, ingredients, steps, and metadata."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add client-side routing and navigation wiring for Explore (home), Recipe Detail, and New Recipe flows; ensure header navigation links reach these views."
+        },
+        {
+          "path": "frontend/src/api/backendActor.ts",
+          "operation": "create",
+          "description": "Create a frontend backend-connection helper that provides access to the Motoko canister methods defined in frontend/src/backend.d.ts using the core-infrastructure setup. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/api/recipes.ts",
+          "operation": "create",
+          "description": "Add React Query hooks for fetching all recipes, fetching by id, and fetching by category/cuisine, and provide a client-side search utility that filters based on current language fields. Use React Query to manage caching and loading states. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/RecipeCard.tsx",
+          "operation": "create",
+          "description": "Create a recipe card component for the explore grid showing photo, localized title, and key metadata (category/cuisine, time, servings). Use shadcn-ui components (e.g., Card, Badge) for consistent UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/RecipeFiltersBar.tsx",
+          "operation": "create",
+          "description": "Create search + filter controls (search input, category filter, cuisine filter) with localized labels/placeholders. Use shadcn-ui components (Input, Select/Dropdown) for controls. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ExplorePage.tsx",
+          "operation": "create",
+          "description": "Implement the Home/Explore page: hero/branding area, search and filters, and a responsive recipe list/grid driven by React Query data and client-side search in the current language."
+        },
+        {
+          "path": "frontend/src/pages/RecipeDetailPage.tsx",
+          "operation": "create",
+          "description": "Implement recipe detail page: image, localized title/description, metadata, ingredients, and steps, with loading/error states driven by React Query."
+        },
+        {
+          "path": "frontend/src/components/RecipeMetadata.tsx",
+          "operation": "create",
+          "description": "Create a compact metadata display (category, cuisine, prep/cook times, servings, created date) reusable across card and detail views."
+        }
+      ]
+    },
+    {
+      "id": "REQ-19",
+      "summary": "Add an in-app recipe creation form supporting all bilingual fields and metadata, including controlled selection of a static photo asset path.",
+      "acceptanceCriteria": [
+        "A user can open a 'New Recipe' flow from the UI and submit a recipe.",
+        "Submitting creates the recipe in the backend and it appears in the list immediately after creation.",
+        "The form includes inputs for all required bilingual and metadata fields, and a controlled way to choose a photoAssetPath from known static assets.",
+        "Validation prevents submission when required fields are missing (at minimum: title, category, cuisine, and photoAssetPath)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/NewRecipePage.tsx",
+          "operation": "create",
+          "description": "Create a New Recipe page (or routed view) with the full bilingual recipe form, localized labels, and submit/cancel actions."
+        },
+        {
+          "path": "frontend/src/components/RecipeForm.tsx",
+          "operation": "create",
+          "description": "Implement a controlled recipe form with inputs for all bilingual fields and metadata, basic validation, and submit handler. Use shadcn-ui form controls (Input, Textarea, Select, Button) for consistent styling. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/PhotoAssetPicker.tsx",
+          "operation": "create",
+          "description": "Add a controlled photoAssetPath selector limited to known static assets under frontend/public/assets/generated (display thumbnail + path selection). Use shadcn-ui components for selection UI. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/api/recipes.ts",
+          "operation": "modify",
+          "description": "Add a React Query mutation hook to submit a new recipe via the backend addRecipe function and invalidate/refetch recipe list queries upon success. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add a visible 'New Recipe' navigation entry/button to open the New Recipe flow; ensure label is localized. Use shadcn-ui Button for the action. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the New Recipe view into routing so it is reachable from navigation and returns to Explore after successful creation."
+        }
+      ]
+    },
+    {
+      "id": "REQ-20",
+      "summary": "Apply a cohesive, distinctive food-themed visual design (no blue/purple as primary) across header, navigation, cards, filters, forms, and detail pages with responsive layouts.",
+      "acceptanceCriteria": [
+        "UI styling is consistent across all pages and major components.",
+        "Theme uses a food-appropriate palette that does not rely on blue/purple as primary colors.",
+        "Layouts are responsive and usable on mobile and desktop."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Add Tailwind + shadcn-compatible global styles and set warm brand CSS variables (primary/secondary/accent) using an appetizing palette (e.g., amber/orange/earth tones) while avoiding blue/purple as primary."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions as needed to support the warm brand palette and consistent typography/spacing for a recipe site."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Apply consistent header layout, spacing, and responsive behavior using Tailwind and shadcn-ui primitives. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/ExplorePage.tsx",
+          "operation": "modify",
+          "description": "Ensure Explore layout is responsive (hero + filters + grid) and visually consistent with the site theme."
+        },
+        {
+          "path": "frontend/src/pages/RecipeDetailPage.tsx",
+          "operation": "modify",
+          "description": "Ensure detail page typography (ingredients/steps), spacing, and image presentation match the theme and remain mobile-friendly."
+        },
+        {
+          "path": "frontend/src/pages/NewRecipePage.tsx",
+          "operation": "modify",
+          "description": "Ensure the creation form layout is responsive, clearly grouped (EN/HI sections), and matches theme."
+        }
+      ]
+    },
+    {
+      "id": "REQ-21",
+      "summary": "Add and wire generated static images (logo/hero + recipe photos) under frontend/public/assets/generated and render them for branding and recipe photos via photoAssetPath.",
+      "acceptanceCriteria": [
+        "Generated images exist under frontend/public/assets/generated and are referenced directly by the frontend (not proxied through the backend).",
+        "The header/landing area displays the generated logo and/or hero image.",
+        "Seeded recipes display the generated recipe photos correctly in list and detail views."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/yammy-nevliya-hero.dim_1600x600.png",
+          "operation": "create",
+          "description": "Add the generated hero banner image asset for the Explore/landing hero area."
+        },
+        {
+          "path": "frontend/public/assets/generated/yammy-nevliya-logo.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated logo image asset for the site header/branding."
+        },
+        {
+          "path": "frontend/public/assets/generated/recipe-samosa.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated recipe image asset for seeded recipes."
+        },
+        {
+          "path": "frontend/public/assets/generated/recipe-pizza.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated recipe image asset for seeded recipes."
+        },
+        {
+          "path": "frontend/public/assets/generated/recipe-sushi.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated recipe image asset for seeded recipes."
+        },
+        {
+          "path": "frontend/public/assets/generated/recipe-chocolate-cake.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated recipe image asset for seeded recipes."
+        },
+        {
+          "path": "frontend/public/assets/generated/recipe-tacos.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated recipe image asset for seeded recipes."
+        },
+        {
+          "path": "frontend/public/assets/generated/recipe-ramen.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add generated recipe image asset for seeded recipes."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Render the logo from frontend/public/assets/generated/yammy-nevliya-logo.dim_512x512.png in the header and ensure it links back to Explore."
+        },
+        {
+          "path": "frontend/src/pages/ExplorePage.tsx",
+          "operation": "modify",
+          "description": "Render the hero banner from frontend/public/assets/generated/yammy-nevliya-hero.dim_1600x600.png in the landing/explore hero area and ensure recipe cards render images via each recipe's photoAssetPath."
+        },
+        {
+          "path": "frontend/src/pages/RecipeDetailPage.tsx",
+          "operation": "modify",
+          "description": "Ensure the recipe detail view renders the recipe image using the recipe's photoAssetPath and handles missing/broken assets gracefully."
+        },
+        {
+          "path": "frontend/src/components/PhotoAssetPicker.tsx",
+          "operation": "modify",
+          "description": "Populate the photo selection list with the known generated asset paths: frontend/public/assets/generated/recipe-samosa.dim_1200x800.png, frontend/public/assets/generated/recipe-pizza.dim_1200x800.png, frontend/public/assets/generated/recipe-sushi.dim_1200x800.png, frontend/public/assets/generated/recipe-chocolate-cake.dim_1200x800.png, frontend/public/assets/generated/recipe-tacos.dim_1200x800.png, frontend/public/assets/generated/recipe-ramen.dim_1200x800.png."
+        }
+      ]
+    }
+  ]
+}
